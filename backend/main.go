@@ -24,7 +24,7 @@ func main() {
 	r.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
 			"http://localhost:5173",
-			"https://fullstack-ecommerce-app-two.vercel.app/",
+			"https://fullstack-ecommerce-app-two.vercel.app",
 		},
 
 		AllowMethods: []string{
