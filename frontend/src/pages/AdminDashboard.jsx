@@ -50,7 +50,7 @@ function AdminDashboard() {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:8080/admin/dashboard", {
+      .get(`${import.meta.env.VITE_API_URL}/admin/dashboard`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,7 +59,7 @@ function AdminDashboard() {
       .catch((err) => console.log(err));
 
     axios
-      .get("http://localhost:8080/admin/analytics", {
+      .get(`${import.meta.env.VITE_API_URL}/admin/analytics`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -68,7 +68,7 @@ function AdminDashboard() {
       .catch((err) => console.log(err));
 
     axios
-      .get("http://localhost:8080/admin/recent-orders", {
+      .get(`${import.meta.env.VITE_API_URL}/admin/recent-orders`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -77,7 +77,7 @@ function AdminDashboard() {
       .catch((err) => console.log(err));
 
     axios
-      .get("http://localhost:8080/admin/top-products", {
+      .get(`${import.meta.env.VITE_API_URL}/admin/top-products`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -85,7 +85,7 @@ function AdminDashboard() {
       .then((res) => setTopProducts(res.data));
 
     axios
-      .get("http://localhost:8080/admin/revenue-by-category", {
+      .get(`${import.meta.env.VITE_API_URL}/admin/revenue-by-category`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

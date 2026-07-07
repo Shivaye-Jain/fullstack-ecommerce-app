@@ -42,7 +42,7 @@ function Products() {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/categories");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/categories`);
 
       setCategories(res.data);
     } catch (err) {

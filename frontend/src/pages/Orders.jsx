@@ -12,7 +12,7 @@ function Orders() {
     const fetchOrders = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:8080/orders", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/orders`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

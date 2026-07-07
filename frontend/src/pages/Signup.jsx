@@ -45,7 +45,7 @@ function Signup() {
       setLoading(true);
 
       await axios.post(
-        "http://localhost:8080/register",
+        `${import.meta.env.VITE_API_URL}/register`,
         {
           name,
           email,

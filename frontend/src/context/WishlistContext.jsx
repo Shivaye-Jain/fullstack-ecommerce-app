@@ -17,7 +17,7 @@ export const WishlistProvider = ({ children }) => {
 
       if (!token) return;
 
-      const res = await axios.get("http://localhost:8080/wishlist", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/wishlist`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +33,7 @@ export const WishlistProvider = ({ children }) => {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:8080/wishlist",
+        `${import.meta.env.VITE_API_URL}/wishlist`,
         {
           product_id: product.id,
         },

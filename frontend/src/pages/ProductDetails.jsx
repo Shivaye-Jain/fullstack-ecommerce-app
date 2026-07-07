@@ -61,7 +61,7 @@ function ProductDetails() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:8080/reviews",
+        `${import.meta.env.VITE_API_URL}/reviews`,
         {
           product_id: Number(id),
           rating,

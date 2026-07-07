@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("http://localhost:8080/cart", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:8080/cart",
+        `${import.meta.env.VITE_API_URL}/cart`,
         {
           product_id: product.id,
           quantity: 1,
@@ -133,7 +133,7 @@ export const CartProvider = ({ children }) => {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        "http://localhost:8080/cart/clear",
+        `${import.meta.env.VITE_API_URL}/cart/clear`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

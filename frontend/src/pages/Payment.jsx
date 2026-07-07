@@ -37,7 +37,7 @@ function Payment() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:8080/create-order",
+        `${import.meta.env.VITE_API_URL}/create-order`,
         {
           amount: finalTotal,
         },
@@ -65,7 +65,7 @@ function Payment() {
             // ✅ VERIFY PAYMENT
 
             await axios.post(
-              "http://localhost:8080/verify-payment",
+              `${import.meta.env.VITE_API_URL}/verify-payment`,
 
               response,
 
@@ -79,7 +79,7 @@ function Payment() {
             // ✅ CREATE ORDER AFTER PAYMENT SUCCESS
 
             await axios.post(
-              "http://localhost:8080/orders",
+              `${import.meta.env.VITE_API_URL}/orders`,
               {
                 items: cart,
                 total,
@@ -147,7 +147,7 @@ function Payment() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:8080/apply-coupon",
+        `${import.meta.env.VITE_API_URL}/apply-coupon`,
         {
           code: couponCode,
           total,

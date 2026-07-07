@@ -113,7 +113,7 @@ function Checkout() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:8080/addresses",
+        `${import.meta.env.VITE_API_URL}/addresses`,
         addressForm,
         {
           headers: {
@@ -154,7 +154,7 @@ function Checkout() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("http://localhost:8080/addresses", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/addresses`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

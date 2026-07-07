@@ -24,7 +24,7 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        "http://localhost:8080/profile",
+        `${import.meta.env.VITE_API_URL}/profile`,
         {
           name: editName,
           phone: editPhone,
@@ -63,7 +63,7 @@ function Profile() {
       formData.append("avatar", file);
 
       const res = await axios.post(
-        "http://localhost:8080/profile/avatar",
+        `${import.meta.env.VITE_API_URL}/profile/avatar`,
         formData,
         {
           headers: {
@@ -83,7 +83,7 @@ function Profile() {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:8080/me", {
+      .get(`${import.meta.env.VITE_API_URL}/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -92,7 +92,7 @@ function Profile() {
       .catch((err) => console.log(err));
 
     axios
-      .get("http://localhost:8080/profile/stats", {
+      .get(`${import.meta.env.VITE_API_URL}/profile/stats`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

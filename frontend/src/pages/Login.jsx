@@ -20,7 +20,7 @@ function Login() {
       setError("");
 
       const res = await axios.post(
-        "http://localhost:8080/login",
+        `${import.meta.env.VITE_API_URL}/login`,
         {
           email,
           password,

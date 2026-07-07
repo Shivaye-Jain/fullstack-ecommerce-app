@@ -54,7 +54,7 @@ function AdminProducts() {
         data.append("image", file);
 
         const res = await axios.post(
-          "http://localhost:8080/admin/upload",
+          `${import.meta.env.VITE_API_URL}/admin/upload`,
           data,
           {
             headers: {
@@ -81,7 +81,7 @@ function AdminProducts() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:8080/admin/products",
+        `${import.meta.env.VITE_API_URL}/admin/products`,
         {
           ...formData,
 
@@ -178,7 +178,7 @@ function AdminProducts() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/products");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`);
       setProducts(res.data.products);
     } catch (err) {
       console.log(err);
