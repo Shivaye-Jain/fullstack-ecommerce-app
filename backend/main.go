@@ -3,6 +3,8 @@ package main
 import (
 	"ecommerce/config"
 	"ecommerce/routes"
+	"os"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -26,6 +28,7 @@ func main() {
 	r.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
 			"http://localhost:5173",
+			"https://fullstack-ecommerce-app-two.vercel.app/",
 		},
 
 		AllowMethods: []string{
@@ -67,11 +70,15 @@ func main() {
 
 	routes.AddressRoutes(r)
 
-	routes.CouponRoutes(r);
+	routes.CouponRoutes(r)
 
-	routes.ReviewRoutes(r);
+	routes.ReviewRoutes(r)
 
-	routes.UserRoutes(r);
+	routes.UserRoutes(r)
 
-	r.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	r.Run(":" + port)
 }

@@ -1,26 +1,37 @@
-package config;
+package config
 
 import (
 	"database/sql"
+	"fmt"
+	"os"
+
 	_ "github.com/go-sql-driver/mysql"
-);
+)
 
-var DB *sql.DB;
+var DB *sql.DB
 
-func ConnectDB(){
-	dsn := "root:shiva1jain@tcp(127.0.0.1:3306)/ecommerce?parseTime=true";
+func ConnectDB() {
 
-	db, err := sql.Open("mysql", dsn);
+	dsn := fmt.Sprintf(
+		"%s:%s@tcp(%s:%s)/%s?parseTime=true",
+		os.Getenv("MYSQLUSER"),
+		os.Getenv("MYSQLPASSWORD"),
+		os.Getenv("MYSQLHOST"),
+		os.Getenv("MYSQLPORT"),
+		os.Getenv("MYSQLDATABASE"),
+	)
 
-	if (err != nil){
-		panic(err);
+	db, err := sql.Open("mysql", dsn)
+
+	if err != nil {
+		panic(err)
 	}
 
-	err = db.Ping();
+	err = db.Ping()
 
-	if (err != nil){
-		panic(err);
+	if err != nil {
+		panic(err)
 	}
 
-	DB = db;
+	DB = db
 }

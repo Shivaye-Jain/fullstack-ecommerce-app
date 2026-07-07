@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"os"
 
 	gomail "gopkg.in/gomail.v2"
 )
@@ -11,11 +12,15 @@ func SendOrderConfirmationEmail(
 	orderID int,
 	total float64,
 ) error {
-	m := gomail.NewMessage();
 
-	m.SetHeader("From", "jainshivaye25@gmail.com");
+	emailUser := os.Getenv("EMAIL_USER")
+	emailPass := os.Getenv("EMAIL_PASS")
 
-	m.SetHeader("To", to);
+	m := gomail.NewMessage()
+
+	m.SetHeader("From", emailUser)
+
+	m.SetHeader("To", to)
 
 	m.SetHeader(
 		"Subject",
@@ -26,7 +31,7 @@ func SendOrderConfirmationEmail(
 	)
 
 	body := fmt.Sprintf(`
-		<h2> Thank you for your order! </h2>
+		<h2>Thank you for your order!</h2>
 
 		<p>
 			Your order <b>#%d</b> has been placed successfully.
@@ -43,19 +48,19 @@ func SendOrderConfirmationEmail(
 		<br/>
 
 		<p>
-			Thanks, <br/>
+			Thanks,<br/>
 			MyStore Team
 		</p>
-	`, orderID, total);
+	`, orderID, total)
 
-	m.SetBody("text/html", body);
+	m.SetBody("text/html", body)
 
 	d := gomail.NewDialer(
 		"smtp.gmail.com",
 		587,
-		"jainshivaye25@gmail.com",
-		"pzqd ceij nbab yknx",
-	);
+		emailUser,
+		emailPass,
+	)
 
-	return d.DialAndSend(m);
+	return d.DialAndSend(m)
 }
