@@ -123,7 +123,7 @@ function AdminProducts() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:8080/admin/products/${editingProduct.id}`,
+        `${import.meta.env.VITE_API_URL}/admin/products/${editingProduct.id}`,
         {
           ...formData,
 
@@ -159,7 +159,7 @@ function AdminProducts() {
     if (!confirmDelete) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:8080/admin/products/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/admin/products/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

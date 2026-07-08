@@ -57,7 +57,7 @@ function Products() {
       setError("");
 
       const res = await axios.get(
-        `http://localhost:8080/products?page=${page}&limit=8&search=${debouncedSearch}&category=${selectedCategory}&sort=${sort}`,
+        `${import.meta.env.VITE_API_URL}/products?page=${page}&limit=8&search=${debouncedSearch}&category=${selectedCategory}&sort=${sort}`,
       );
 
       setProducts(res.data.products);

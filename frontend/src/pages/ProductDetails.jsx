@@ -47,7 +47,7 @@ function ProductDetails() {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/reviews/${id}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/reviews/${id}`);
       setReviews(res.data);
     } catch (err) {
       console.log(err);
@@ -92,7 +92,7 @@ function ProductDetails() {
     fetchReviews();
 
     axios
-      .get(`http://localhost:8080/products/${id}/related`)
+      .get(`${import.meta.env.VITE_API_URL}/products/${id}/related`)
       .then((res) => setRelatedProducts(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -114,7 +114,7 @@ function ProductDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/products/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/products/${id}`)
       .then((res) => {
         setProduct(res.data);
         setSelectedImage(res.data.images[0]);

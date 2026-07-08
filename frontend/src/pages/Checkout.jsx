@@ -42,7 +42,7 @@ function Checkout() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:8080/addresses/${id}/default`,
+        `${import.meta.env.VITE_API_URL}/addresses/${id}/default`,
         {},
         {
           headers: {
@@ -61,7 +61,7 @@ function Checkout() {
     const token = localStorage.getItem("token");
     try {
       await axios.put(
-        `http://localhost:8080/addresses/${editingAddress.id}`,
+        `${import.meta.env.VITE_API_URL}/addresses/${editingAddress.id}`,
         editingAddress,
         {
           headers: {
@@ -84,7 +84,7 @@ function Checkout() {
     const token = localStorage.getItem("token");
     try {
       await axios.delete(
-        `http://localhost:8080/addresses/${addressToDelete.id}`,
+        `${import.meta.env.VITE_API_URL}/addresses/${addressToDelete.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

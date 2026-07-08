@@ -41,7 +41,7 @@ const AdminOrders = () => {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:8080/admin/orders/${id}`,
+        `${import.meta.env.VITE_API_URL}/admin/orders/${id}`,
         { status },
         {
           headers: {

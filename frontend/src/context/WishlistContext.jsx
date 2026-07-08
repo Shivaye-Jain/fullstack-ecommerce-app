@@ -58,7 +58,7 @@ export const WishlistProvider = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:8080/wishlist/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/wishlist/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
