@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 
 import { ThemeContext } from "../context/ThemeContext";
@@ -20,6 +20,8 @@ function Navbar() {
     user,
     logout,
   } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const [showDropdown, setShowDropdown] =
     useState(false);
@@ -56,7 +58,7 @@ function Navbar() {
 
     logout();
 
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (
